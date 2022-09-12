@@ -48,11 +48,9 @@
           span.textContent = text.msg
           return
         } else {
-          console.log(`throw ${data.statusText}`);
-          throw Error(data.statusText)
+          throw Error(`failed with ${data.status}`)
         }
       } catch (error) {
-        console.log(`error ${error.message}`);
         p.textContent = error.message
       }
     })
