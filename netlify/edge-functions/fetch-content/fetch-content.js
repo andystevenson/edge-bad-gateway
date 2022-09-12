@@ -1,9 +1,17 @@
 export default async (request, { log }) => {
   const url = new URL(request.url)
   const content = `${url.origin}/.netlify/functions/content`
-  const data = await fetch(content, { headers: { authorization: 'hey up' } })
-  const json = await data.json()
-  return new Response(`fetched [${json.msg}]`, {
-    headers: { 'content-type': 'text/html' },
-  })
+  try {
+    const data = await fetch(content, { headers: { authorization: 'hey up' } })
+    if (data.ok) {
+      const json = await data.json()
+      return new Response(`fetched [${json.msg}]`, {
+        headers: { 'content-type': 'text/html' },
+      })
+    } else {
+      throw Error(`fetch failed ${data.status}`)
+    }
+  } catch (error) {
+    log(`fetch-content error! [${error.message}]`)
+  }
 }
