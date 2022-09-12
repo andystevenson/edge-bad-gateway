@@ -24,3 +24,7 @@
 [[edge_functions]]
 function = "auth"
 path = "/.netlify/*"
+
+[[edge_functions]]
+function = "fetch-content"
+path = "/fetch-content"
