@@ -43,15 +43,16 @@
         const headers = withHeader ? { headers: { authorization: 'hi there!' } } : {}
         withHeader = !withHeader // toggle it next time
         const data = await fetch('/.netlify/functions/content', headers)
-        console.log({ data });
         if (data.ok) {
           const text = await data.json()
           span.textContent = text.msg
           return
         } else {
+          console.log(`throw ${data.statusText}`);
           throw Error(data.statusText)
         }
       } catch (error) {
+        console.log(`error ${error.message}`);
         p.textContent = error.message
       }
     })
