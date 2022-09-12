@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edge-bad-gateway</title>
+  <style>
+    body {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    span {
+      display: block;
+      color: green;
+    }
+
+    p {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>edge-bad-gateway</h1>
+  <button>press me</button>
+  <span></span>
+  <p></p>
+  <script>
+    const button = document.querySelector('button')
+    const span = document.querySelector('span')
+    const p = document.querySelector('p')
+    let withHeader = true
+    button?.addEventListener('click', async () => {
+      p.textContent = ''
+      span.textContent = ''
+      try {
+        const headers = withHeader ? { headers: { authorization: 'hi there!' } } : {}
+        withHeader = !withHeader // toggle it next time
+        const data = await fetch('/.netlify/functions/content', headers)
+        console.log({ data });
+        if (data.ok) {
+          const text = await data.json()
+          span.textContent = text.msg
+          return
+        } else {
+          throw Error(data.statusText)
+        }
+      } catch (error) {
+        p.textContent = error.message
+      }
+    })
+  </script>
+</body>
+
+</html>
