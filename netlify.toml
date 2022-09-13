@@ -40,3 +40,7 @@ path = "/fetch-on-demand-content"
 [[edge_functions]]
 function = "hello2"
 path = "/hello2"
+
+[[edge_functions]]
+function = "transform-response"
+path = "/test"
