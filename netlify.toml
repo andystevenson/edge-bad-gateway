@@ -22,13 +22,13 @@
 
 
 [[edge_functions]]
-function = "auth"
-path = "/.netlify/*"
+  function = "auth"
+  path = "/.netlify/*"
 
 [[edge_functions]]
-function = "fetch-content"
-path = "/fetch-content"
+  function = "fetch-content"
+  path = "/fetch-content"
 
 [[edge_functions]]
-function = "fetch-on-demand-content"
-path = "/fetch-on-demand-content"
+  function = "fetch-on-demand-content"
+  path = "/fetch-on-demand-content"
