@@ -18,7 +18,7 @@ export default async (request, { log, next, text }) => {
   log({ response })
 
   let page = await response.text()
-  log({ test })
+  log({ text })
 
   const replace = /{{replace-me}}/g
   page = page.replaceAll(replace, replaceText)
