@@ -44,7 +44,8 @@
       try {
         const headers = withHeader ? { headers: { authorization: 'hi there!' } } : {}
         withHeader = !withHeader // toggle it next time
-        const data = await fetch('/fetch-content', headers)
+        const resource = `${window.location.href}fetch-content`
+        const data = await fetch(resource, headers)
         if (data.ok) {
           const text = await data.text()
           span.textContent = text
@@ -63,7 +64,9 @@
       try {
         const headers = withHeader ? { headers: { authorization: 'hi there!' } } : {}
         withHeader = !withHeader // toggle it next time
-        const data = await fetch('/fetch-on-demand-content', headers)
+        const resource = `${window.location.href}fetch-on-demand-content`
+
+        const data = await fetch(resource, headers)
         if (data.ok) {
           const text = await data.text()
           span.textContent = text
