@@ -1,4 +1,4 @@
-export default async (request, context) => {
+export default async (request, { log }) => {
   const url = new URL(request.url)
   const path = `${url.origin}/.netlify/functions/content`
   let replaceText = null
@@ -11,9 +11,9 @@ export default async (request, context) => {
     }
   } catch (error) {
     replaceText = `fetch-content error! [${error.message}]`
-    log(replaceText)
   }
 
+  log({ replaceText })
   const response = await context.next()
   let text = await response.text()
 
