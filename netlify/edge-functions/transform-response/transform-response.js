@@ -1,4 +1,4 @@
-export default async (request, { log, next, text }) => {
+export default async (request, { log, next }) => {
   const url = new URL(request.url)
   const path = `${url.origin}/.netlify/functions/content`
   let replaceText = null
@@ -14,11 +14,16 @@ export default async (request, { log, next, text }) => {
   }
 
   log({ replaceText })
-  const response = await next()
-  log({ response })
+  let page = null
+  try {
+    const response = await next()
+    log({ response })
 
-  let page = await response.text()
-  log({ page })
+    page = await response.text()
+    log({ page })
+  } catch (error) {
+    log(`next failed....${error.message}`)
+  }
 
   const replace = /{{replace-me}}/g
   page = page.replaceAll(replace, replaceText)
