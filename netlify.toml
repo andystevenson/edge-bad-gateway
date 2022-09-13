@@ -30,8 +30,8 @@ function = "hello"
 path = "/hello"
 
 [[edge_functions]]
-function = "fetch-content"
-path = "/fetch-content"
+function = "get-content"
+path = "/get-content"
 
 [[edge_functions]]
 function = "fetch-on-demand-content"

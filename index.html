@@ -44,7 +44,7 @@
       try {
         const headers = withHeader ? { headers: { authorization: 'hi there!' } } : {}
         withHeader = !withHeader // toggle it next time
-        const resource = `${window.location.href}fetch-content`
+        const resource = `${window.location.href}get-content`
         const data = await fetch(resource, headers)
         if (data.ok) {
           const text = await data.text()
