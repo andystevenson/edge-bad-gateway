@@ -1,6 +1,6 @@
 export default async (request, { log }) => {
   const url = new URL(request.url)
-  const content = `${url.origin}/.netlify/functions/on-demand-content`
+  const content = `${url.origin}/.netlify/builders/on-demand-content`
   try {
     const data = await fetch(content, { headers: { authorization: 'hey up' } })
     if (data.ok) {
