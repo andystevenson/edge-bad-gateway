@@ -26,13 +26,13 @@ path = "/.netlify/*"
 function = "auth"
 
 [[edge_functions]]
-path = "/fetch-content"
+function = "hello"
+path = "/hello"
+
+[[edge_functions]]
 function = "fetch-content"
+path = "/fetch-content"
 
 [[edge_functions]]
 function = "fetch-on-demand-content"
 path = "/fetch-on-demand-content"
-
-[[edge_functions]]
-function = "hello"
-path = "/hello"
