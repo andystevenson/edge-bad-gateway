@@ -44,8 +44,8 @@
         withHeader = !withHeader // toggle it next time
         const data = await fetch('/.netlify/functions/content', headers)
         if (data.ok) {
-          const text = await data.json()
-          span.textContent = text.msg
+          const text = await data.text()
+          span.textContent = text
           return
         } else {
           throw Error(`failed with ${data.status}`)
