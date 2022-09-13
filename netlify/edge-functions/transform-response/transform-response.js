@@ -15,7 +15,10 @@ export default async (request, { log }) => {
 
   log({ replaceText })
   const response = await context.next()
+  log({ response })
+
   let text = await response.text()
+  log({ test })
 
   const replace = /{{replace-me}}/g
   text = text.replaceAll(replace, replaceText)
