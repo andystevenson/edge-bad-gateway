@@ -7,7 +7,7 @@ export default async (request, context) => {
     if (data.ok) {
       replaceText = await data.text()
     } else {
-      throw Error(`fetch-content failed ${data.status}`)
+      replaceText = `fetch-content failed ${data.status}`
     }
   } catch (error) {
     replaceText = `fetch-content error! [${error.message}]`
