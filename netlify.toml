@@ -32,3 +32,7 @@ function = "fetch-content"
 [[edge_functions]]
 function = "fetch-on-demand-content"
 path = "/fetch-on-demand-content"
+
+[[edge_functions]]
+function = "hello"
+path = "/hello"
