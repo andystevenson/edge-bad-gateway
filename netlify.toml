@@ -28,3 +28,7 @@ path = "/.netlify/*"
 [[edge_functions]]
 function = "fetch-content"
 path = "/fetch-content"
+
+[[edge_functions]]
+function = "fetch-on-demand-content"
+path = "/fetch-on-demand-content"

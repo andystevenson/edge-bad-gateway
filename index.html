@@ -44,7 +44,7 @@
       try {
         const headers = withHeader ? { headers: { authorization: 'hi there!' } } : {}
         withHeader = !withHeader // toggle it next time
-        const data = await fetch('/.netlify/functions/content', headers)
+        const data = await fetch('/fetch-content', headers)
         if (data.ok) {
           const text = await data.text()
           span.textContent = text
@@ -63,7 +63,7 @@
       try {
         const headers = withHeader ? { headers: { authorization: 'hi there!' } } : {}
         withHeader = !withHeader // toggle it next time
-        const data = await fetch('/.netlify/functions/on-demand-content', headers)
+        const data = await fetch('/fetch-on-demand-content', headers)
         if (data.ok) {
           const text = await data.text()
           span.textContent = text
